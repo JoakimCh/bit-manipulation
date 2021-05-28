@@ -324,7 +324,7 @@ export function negativeIntegerFromBits(...bits) {
   return negativeIntegerFromValue(~bitmask(...bits))
 }
 
-/** Create a negative integer (two's complement) from the bits in a value. One use case could be that you read the bits into an usigned integer, but you actually wanted those bits to be represented as a negative number. Or educational use. 
+/** Create a negative integer (two's complement) from the bits in a value. One use case could be that you read the bits into an unsigned integer, but you actually wanted those bits to be represented as a negative number. Or educational use. 
  * @param {number|bigint} value The value with bits representing a negative number in two's complement format.
  * @returns {number|bigint}
 */
