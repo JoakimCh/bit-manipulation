@@ -181,7 +181,7 @@ false
     * [.Serial](#module_bit-manipulation.Serial)
         * [new exports.Serial(value)](#new_module_bit-manipulation.Serial_new)
         * [.x(func)](#module_bit-manipulation.Serial+x)
-        * [.out([base])](#module_bit-manipulation.Serial+out)
+        * [.out([base])](#module_bit-manipulation.Serial+out) ⇒ <code>number</code> \| <code>bigint</code> \| <code>string</code>
         * [.log([base])](#module_bit-manipulation.Serial+log)
         * [.not(bitLength)](#module_bit-manipulation.Serial+not)
         * [.reverseBitOrder(bitLength)](#module_bit-manipulation.Serial+reverseBitOrder)
@@ -214,7 +214,7 @@ false
     * [.bitmask(...bits)](#module_bit-manipulation.bitmask) ⇒ <code>number</code> \| <code>bigint</code>
     * [.bitmask_allSet(numBits)](#module_bit-manipulation.bitmask_allSet) ⇒ <code>number</code> \| <code>bigint</code>
     * [.integerFromBits(...bits)](#module_bit-manipulation.integerFromBits) ⇒ <code>number</code> \| <code>bigint</code>
-    * [.negativeIntegerFromBits()](#module_bit-manipulation.negativeIntegerFromBits)
+    * [.negativeIntegerFromBits(...bits)](#module_bit-manipulation.negativeIntegerFromBits) ⇒ <code>number</code> \| <code>bigint</code>
     * [.negativeIntegerFromValue(value)](#module_bit-manipulation.negativeIntegerFromValue) ⇒ <code>number</code> \| <code>bigint</code>
     * [.serial(value)](#module_bit-manipulation.serial) ⇒ <code>Serial</code>
     * [.numberToHex(number, [paddingByteSize], [grouping], [showPrefix])](#module_bit-manipulation.numberToHex) ⇒ <code>string</code>
@@ -230,7 +230,7 @@ A class allowing multiple bitwise operations done in serial order on a value (fo
 * [.Serial](#module_bit-manipulation.Serial)
     * [new exports.Serial(value)](#new_module_bit-manipulation.Serial_new)
     * [.x(func)](#module_bit-manipulation.Serial+x)
-    * [.out([base])](#module_bit-manipulation.Serial+out)
+    * [.out([base])](#module_bit-manipulation.Serial+out) ⇒ <code>number</code> \| <code>bigint</code> \| <code>string</code>
     * [.log([base])](#module_bit-manipulation.Serial+log)
     * [.not(bitLength)](#module_bit-manipulation.Serial+not)
     * [.reverseBitOrder(bitLength)](#module_bit-manipulation.Serial+reverseBitOrder)
@@ -268,7 +268,7 @@ Manipulate or read the value using your own function, return nothing if no chang
 
 <a name="module_bit-manipulation.Serial+out"></a>
 
-#### serial.out([base])
+#### serial.out([base]) ⇒ <code>number</code> \| <code>bigint</code> \| <code>string</code>
 Returns the value operated on.
 
 **Kind**: instance method of [<code>Serial</code>](#module_bit-manipulation.Serial)  
@@ -641,14 +641,19 @@ Create a positive integer with only these bits set. If setting bits over bit 53 
 
 <a name="module_bit-manipulation.negativeIntegerFromBits"></a>
 
-### bm.negativeIntegerFromBits()
+### bm.negativeIntegerFromBits(...bits) ⇒ <code>number</code> \| <code>bigint</code>
 Create a negative integer (two's complement) from which bit positions should be set to 0.
 
 **Kind**: static method of [<code>bit-manipulation</code>](#module_bit-manipulation)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| ...bits | <code>number</code> | Which bits to set to 0, where 1 means the least significant bit. |
+
 <a name="module_bit-manipulation.negativeIntegerFromValue"></a>
 
 ### bm.negativeIntegerFromValue(value) ⇒ <code>number</code> \| <code>bigint</code>
-Create a negative integer (two's complement) from the bits in a value. One use case could be that you read the bits into an usigned integer, but you actually wanted those bits to be represented as a negative number. Or educational use.
+Create a negative integer (two's complement) from the bits in a value. One use case could be that you read the bits into an unsigned integer, but you actually wanted those bits to be represented as a negative number. Or educational use.
 
 **Kind**: static method of [<code>bit-manipulation</code>](#module_bit-manipulation)  
 
@@ -674,7 +679,7 @@ serial(value).rShift(32).and(0xFFFF_FFFF).out()
 <a name="module_bit-manipulation.numberToHex"></a>
 
 ### bm.numberToHex(number, [paddingByteSize], [grouping], [showPrefix]) ⇒ <code>string</code>
-Converts any Number or BigInt into a hexadecimal representation.
+Converts any `Number` or `BigInt` into a hexadecimal representation.
 
 Numbers with a fractional part will represented in the IEEE 754 double-precision binary format. Where the first bit is the sign bit, followed by the exponent (11 bits) and the significand / mantissa (52 bits).
 
@@ -693,7 +698,7 @@ Other numbers (integers) will be represented in the two's complement format. Whe
 <a name="module_bit-manipulation.numberToBinary"></a>
 
 ### bm.numberToBinary(number, [paddingBits], [grouping], [showPrefix]) ⇒ <code>string</code>
-Converts any Number or BigInt into a binary representation.
+Converts any `Number` or `BigInt` into a binary representation.
 
 Numbers with a fractional part will represented in the IEEE 754 double-precision binary format. Where the first bit is the sign bit, followed by the exponent (11 bits) and the significand / mantissa (52 bits).
 
@@ -752,7 +757,7 @@ Convert a (64-bit double precision) floating point number into an object with in
 <a name="float.set"></a>
 
 ### float.set ⇒ <code>number</code>
-Set bits (as in setting them to 1) in the float supplied. This is done using an object with information about which bits to set in the exponent and the significand. Set the `signBit` to turn the float into a negative number.
+Set bits (as in setting them to 1) in the float supplied. This is done using an object with information about which bits to set in the `exponent` and the `significand`. Set the `signBit` to turn the float into a negative number.
 
 **Kind**: static property of [<code>float</code>](#float)  
 **Returns**: <code>number</code> - A 64-bit float.  
