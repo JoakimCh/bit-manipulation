@@ -366,6 +366,7 @@ export class Serial {
 
   /** Returns the value operated on.
    * @param {number|string} [base] The base to use. Defaults to base 10, also supports base 2 and 16.
+   * @returns {number|bigint|string}
   */
   out(base) {
     switch (base) {
