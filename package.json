@@ -1,0 +1,40 @@
+{
+  "name": "bit-manipulation",
+  "version": "1.0.0",
+  "author": "Joakim L. Christiansen (https://joakimch.github.io)",
+  "license": "MIT",
+  "type": "module",
+  "main": "source/bitManipulation.js",
+  "files": [
+    "source/*"
+  ],
+  "repository": "github:JoakimCh/bit-manipulation",
+  "funding": "https://joakimch.github.io/funding.html",
+  "description": "An ES module providing functions for setting and clearing bits (and doing any bitwise operations) in Numbers up to 53 bits and in BigInts of any bit-width. In addition there's also functions to manipulate the bits in JavaScript's 64-bit floats and representing integers (in two's complement format) in binary or hex.",
+  "keywords": [
+    "bit",
+    "bits",
+    "set",
+    "clear",
+    "check",
+    "xor",
+    "not",
+    "or",
+    "and",
+    "bitwise",
+    "operations",
+    "float",
+    "exponent",
+    "mantissa",
+    "significand",
+    "binary",
+    "hex"
+  ],
+  "scripts": {
+    "test": "node tests/runAll.js",
+    "docs": "jsdoc2md --template readmeTemplate.md source/*.js > readme.md"
+  },
+  "devDependencies": {
+    "jsdoc-to-markdown": "^7.0.1"
+  }
+}
